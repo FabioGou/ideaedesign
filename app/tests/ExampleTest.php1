@@ -1,0 +1,50 @@
+<?php
+
+class ExampleTest extends TestCase {
+
+	/**
+	 * A basic functional test example.
+	 *
+	 * @return void
+	 */
+	public function ftestBasicExample()
+	{
+		$crawler = $this->client->request('GET', '/');
+
+		$this->assertTrue($this->client->getResponse()->isOk());
+	}
+
+	public function ftestLoop()
+    {
+        $cId = 1;
+        $j = 1;
+        $k = 1;
+        $l = 1;
+        $ar = [];
+        $itens = '1,2,3';
+        $valor = 24.35 * 3;
+        for($i=1; $i<=75; $i++){
+            if( $j > 3){
+                $cId++;
+                $j = 1;
+
+            }
+
+            if($k > 15){
+                $l++;
+                $k = 1;
+                $x = $l * 3;
+
+                $itens = $x - 2 . ',';
+                $itens .= $x -1 . ',';
+                $itens .= $x;
+            }
+
+            $ar[] = array('id'=>$i, 'consumidor_id'=>$cId, 'itens'=>$itens, 'valor_total'=>$valor, 'observacao'=>'');
+            $j++;$k++;
+        }
+
+        var_dump($ar);
+    }
+
+}
